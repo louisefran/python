@@ -1,6 +1,5 @@
 pip install pygame
 ---
-
 import pygame #nhập vào thư viện pygame
 pygame.init() #sử dụng các thư viên của pygame (dòng này phải có :))
 
@@ -43,3 +42,43 @@ pygame.quit() #sau khi while trả về FALSE thì sẽ thoát ra, thoát ra th�
 
 
 ---
+
+import pygame 
+pygame.init() 
+
+win = pygame.display.set_mode((500, 500)) #
+
+pygame.display.set_caption("NEW GAME") 
+
+x = 50 
+y = 50 
+width = 40 
+height = 60 
+vel = 5 
+
+run = True 
+while run: 
+    pygame.time.delay(50)
+
+    for event in pygame.event.get(): 
+        if event.type == pygame.QUIT:
+            run = False 
+    keys = pygame.key.get_pressed()  
+    if keys[pygame.K_LEFT] and x > vel : #và x phải lớn hơn lề của vật, nếu không thì dừng lại
+        x -= vel 
+    if keys[pygame.K_RIGHT] and x < 500 - width - vel: #và x phải bé hơn 500 mà trừ đi chiều rộng của vật để vật hiện ra ngoài viền, và (y) trừ thêm lề nữa để hiện một khoản trống 
+        x += vel
+    if keys [pygame.K_w]and y > vel: #
+        y -= vel 
+    if keys[pygame.K_UP] :
+        y -= vel
+    if keys[pygame.K_DOWN] and y < 500 - height - vel:#
+        y += vel
+        
+    win.fill((0, 0, 0))
+    pygame.draw.rect(win, (255, 0, 0), (x, y, width, height))  
+    pygame.display.update() 
+
+    
+    
+pygame.quit() 
