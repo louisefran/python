@@ -12,7 +12,7 @@ x = 50 #tọa độ xuất hiện của vật, trục x
 y = 50 #...
 width = 40 #chiều rộng
 height = 60 #chiều cao
-vel = 5 #biến. khoản cách bước đi của vật 
+vel = 5 #biến. khoản cách bước đi của vật. Lề chăng?
 
 run = True #Như một cái công tắt để bật tắt game chẳng hạn :)
 while run: #bản chất của game là: vẽ - điều khiển - vòng lập mà :)!
