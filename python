@@ -1,0 +1,422 @@
+Toán tử cơ bản:
+- #phép trừ.
+* #phép nhân.
+/ #phép chia.
+% #phép chia lấy dư.
+
+not #để đảo giá trị.
+and #phép tính logic và (AND).
+or #phép tính logic hoặc (OR).
+
+Kiểm tra giá trị:
+in #kiểm tra có tồn tại.
+not in #kiểm tra không tồn tại.
+
+array = [1, 2, 3, 'a', 'b']
+Lấy độ dài của chuỗi, mảng:
+	len()
+Tìm và thay thế nội dung:
+	str.replace()
+Tìm vị trí chuỗi con:
+	str.find() #tìm theo thứ tự từ trái sang phải.
+	str.rfind() #tìm theo vị trí cuối chuỗi về phía trước.
+Tách chuỗi:
+	str.split() #trả về một mảng có 2 phần tử là 2 chuỗi của chuổi bản đầu.
+	str.splitlines() #để tách chuỗi theo từng hàng và loại bỏ ký tự NEWLINE.
+Trim ký tự khoẳng trắng:
+	strip() #loại bỏ trước và sau chuỗi.
+	lstrip() #loại bỏ phía trước chuỗi.
+	rstrip() #loại bỏ phía sau chuỗi.
+Một số hàm xử lý chuỗi:
+	isnumeric() #kiểm tra một chuỗi có phải là chuỗi số.
+	lower() #chuyễn chuỗi hết thành chữ thường.
+	upper() #chuyễn chuỗi hết thành chữ HOA.
+
+Kiểm tra sự tồn tại của một phần tử:
+	“Look before you leap (LBYL)"
+		if index < len(array):
+			array[index]
+		else:
+			#handle this
+	“Easier to ask forgiveness than permission”
+	(EAFP)
+		try:
+			array[index]
+		except IndexError:
+			#handle this
+Kiểm tra theo giá trị:
+	in #
+	not in #
+
+Xóa phần tử của mảng:
+	del array[]
+Thêm phần tử vào mảng:
+	list.append(newvalue) #nó được thêm vào cuối mảng.
+Lấy phần tử cuối mảng:
+	list.pop()
+Tìm một giá trị trong mảng:
+	list.index(obj)
+Đảo ngược giá trị của mảng:
+	list.reverse() #không trả về kết quả mà thay đổi trực tiếp mảng.
+Sắp xếp giá trị các phần tử:
+	list.sort([func]) #thay đổi trực tiếp mảng.
+
+Tuple #khi đã được khai báo thì không thể thay đổi giá trị và không hỗ trợ các phương thức như append()...
+	Hỗ trợ các truy xuất phần tử giống List(Mảng).
+	mytuple = ('x','y','z')
+	
+Dictionary.
+	point = {'x': 1,'y': 2}
+	print point[x]
+Thêm một phần tử:
+	dict[key] = value
+	
+	user = {'name': 'Jone','age': 30}
+	user['country'] = 'Vietnam'
+
+Một số hàm, phương thức thông dụng:
+	dict.clear()  #xóa toàn bộ dữ liệu bên trong đối tượng.
+	dict.copy()   #trả về một bản copy của đối tượng
+	dict.fromkeys(seq[, value]) #tạo một đối tượng với
+								danh sách key từ seq và nếu có truyền value thì lấy
+								đó làm giá trị cho các phần tử.
+	dict.has_key(key)  #kiểm tra một key có tồn tại trong
+						đối tượng hay không.
+	dict.keys()    #trả về một List chứa các key.
+	dict.values()  #trả về một List chứa các value.
+
+import modulename
+
+Đường dẫn tìm để load module:
+	import math
+	math.__file__
+	#(Ví dụ trả về '/usr/lib/python2.5/lib-dynload/math.so')
+Lấy danh sách thuộc tính và phương thức của một module:
+	dir(modulename)
+Cách khai báo và sử dụng module:
+	Giả sử bạn tạo một file python mymath.py có nội dung như sau:
+		def cong(a, b):
+			return a + b
+		def tru(a, b):
+			return a - b
+		def nhan(a, b):
+			return a * b
+	Sau đó, tạo một file có tên myexample.py , trong cùng thư 
+	mục với file mymath.py vừa tạo ở trên, có nội dung như sau:
+		import mymath
+		num1 = 1
+		num2 = 2
+		print 'Tong hai so la: ', mymath.cong(num1, num2)
+
+Package module:
+Có thể gom nhiều module .py vào một thư mục và tên thư
+mục là tên của package và tạo một file __init__.py trong
+thư mục này.
+	|-- mypack
+	| |-- __init__.py
+	| |-- mymodule1.py
+	| |-- mymodule2.py
+	|
+Có thể sử dụng mymodule1 theo cú pháp import sau:
+	import mypack.mymodule1
+	(hoặc)
+	import mypack.mymodule1 as mymodule1
+	(hoặc)
+	import mypack.mymodule1 as mod
+Khi sử dụng một module thuộc một package thì các lệnh
+trong file __init__.py sẽ được thực hiện trước. Thông
+thường thì file __init__.py sẽ rỗng.
+
+Có thể tạo các subpackage bên trong một package theo
+đúng cấu trúc thư mục, có file __init__.py . Ví dụ:
+	import mypack.mysubpack.mysubsubpack.module
+
+Class 
+
+class anime(): #tên class
+    ten = '' #biến thuộc class trên
+    tuoi = 0 #
+    def __init__(self, ten='', tuoi = 0): #hhàm tạo của class, quá trình tạo instance
+        self.name = ten #.name thuộc tính của class
+        self.age = tuoi #.age
+    def show(self): #phương thức của class
+        print("Ten cua toi la", self.name)
+    def run(self): #
+        print("Class dang chay")
+    def go(self): #
+        print("class dang di")
+        #khi khai báo có dùng tham số "self" dùng để truy cập ngược lại object đang gọi
+    
+class dog(anime): #tên class thứ 2 - Cũng là class kế thừa từ "anime" (Nên có các phương thức của class mẹ)
+    def run(self):
+        print("dog dang chay")
+
+myanime = anime()
+myanime.show()
+myanime.run()
+myanime.go()
+
+mydog = dog("may man")
+mydog.show() #phương thức .show của class dog là override (được kế thừa từ class anime)
+mydog.run() #
+mydog.go() #
+
+
+Mở file:
+	fileOpen = open('file', 'mode')
+filepath là đường dẫn của file sẽ mở và mode là chế độ để mở:
+	r : mở để đọc nội dung (mặc định)
+	w : mở để ghi nội dung
+	a : mở để ghi thêm nội dung vào cuối file.
+	r+ : mở để đọc và ghi. Con trỏ nằm ở đầu file.
+	w+ : mở để đọc và ghi. Ghi đè nếu file đã tồn tại, nếu
+		file chưa tồn tại thì tạo file mới để ghi.
+	a+ : mở để đọc và thêm vào cuối file. Con trỏ nằm ở
+		cuối file. Nếu file chưa tồn tại thì tạo file mới để ghi.
+Mặc định là mở file text, nếu muốn mở file nhị phân (binary) thì thêm b , 
+	ví dụ: rb , wb , ab , rb+ , wb+ , ab+ .
+
+Sau khi gọi hàm open() thành công thì sẽ trả về một object có các thuộc tính:
+closed : True nếu file đã đóng
+mode : chế độ khi mở file
+name : tên của file
+softspace : cờ đánh dấu softspace khi dùng với hàm
+
+Đọc nội dung từ file:
+	Sau khi file đã mở ở chế độ đọc thì gọi phương thức
+	read([count]) để trả về toàn bộ nội dung của file. Ví dụ:
+
+f1 = open('test.txt','r')
+data = f1.read();
+Hàm read() có nhận một tham số là số lượng byte muốn đọc. Nếu không truyền vào thì sẽ đọc hết nội dung của file.
+	buffdata = f2.read(1024)
+
+
+Ghi nội dung vào file:
+	f2 = open('access_log','a+')
+	f2.write('Attack detected')
+	
+Đóng file đã mở:
+	Sau khi hoàn tất các thao tác đọc ghi file thì gọi phương
+	thức close() để đóng file đã mở. Ví dụ:
+	f1.close()
+	f2.close()
+
+Đổi tên file:
+	Sử dụng phương thức os.rename(old, new) để đổi tên một file. Ví dụ:
+	import os
+	os.rename('test.txt','test_new.txt')
+
+Xóa file:
+	Sử dụng phương thức os.remove(file) để xóa một file khỏi hệ thống:
+	import os
+	os.remove('test.txt')
+
+Tạo thư mục:
+	import os
+	os.mkdir('test')
+	
+Xóa thư mục:
+	os.rmdir('dir')
+	
+Đọc nội dung thư mục:
+Sử dụng phương thức os.listdir(dir) để lấy danh sách
+tập tin, thư mục của thư mục dir . Khi gọi sẽ trả về một
+mảng danh sách các tập tin, thư mục. Ví dụ:
+
+import os
+allfiles = os.listdir('/root/downloads')
+print allfiles
+
+Module os:
+	Module os là một module có nhiều phương thức hữu ích
+	trong việc làm việc với các file và directory, như:
+	
+os.chdir(path) : đổi thư mục hiện hành
+os.getcwd() : trả về thư mục hiện hành
+os.chmod(path, mode) : CHMOD một đường dẫn
+os.chown(path, uid, gid) : CHOWN một đường dẫn
+os.makedirs(path[, mode]) : tạo đường dẫn (có
+recursive)
+os.removedirs(path) : xóa một đường dẫn (có
+recursive)
+
+Module os.path:
+	Module os.path hỗ trợ các phương thức giúp thao tác
+	nhanh chóng và thuận tiện hơn trên đường dẫn.
+
+os.path.exists(path) : kiểm tra 1 đường dẫn có tồn
+tại hay không
+os.path.getsize(path) : lấy file size (byte)
+os.path.isfile(path) : kiểm tra xem có phải là một
+file thông thường
+os.path.isdir(path) : kiểm tra xem có phải là một
+thư mục
+os.path.dirname(path) : trả về tên thư mục của path
+os.path.getatime(path) : trả về thời gian truy cập
+mới nhất
+os.path.getmtime(path) : trả về thời gian chỉnh sửa
+cuối cùng
+os.path.getctime(path) : trả về thời gian chỉnh sửa
+cuối của metadata trên một số hệ thống. Hoặc trả về
+thời gian tạo file trên Windows.
+
+Xử lý hình ảnh
+Cài đặt PIL:
+	Vào trang web sau để download / cài đặt package PIL cho
+	python của bạn
+	http://pillow.readthedocs.org/en/latest/installation.html
+	
+	Sau khi cài đặt thì có thể sử dụng các module trong
+	package IPL:
+		from PIL import Image
+	
+Mở file:
+
+from PIL import Image
+im = Image.open("photo.jpg")
+
+Sau khi mở file hình thành công thì có thể thao tác trên đối
+tượng im .
+
+Ghi file:
+Từ đối tượng Image có thể lưu file xuống máy tính bằng
+phương thức save(path, type) . Ví dụ:
+
+...
+im.save('photo_new.jpg','JPEG')
+
+Tạo thumbnail:
+	Sử dụng phương thức thumbnail như sau:
+from PIL import Image
+im = Image.open('photo.jpg')
+im.thumbnail((100, 100))
+im.save('photo_thumbnail.jpg','JPEG')
+
+thumbnail không trả về image mới mà thực hiện trên
+object image đang gọi.
+
+Các thao tác xử lý hình ảnh:
+	Tham khảo thêm thư viện PIL tại:
+	http://pillow.readthedocs.org/en/latest/index.html
+
+Xử lý file JSON
+Load file từ Internet:
+	Sử dụng module urllib2 để download file.
+	module json để encode/decode JSON data.
+
+import urllib2
+import json
+response = urllib2.urlopen('https://api.github.com/users/voduytuan/repos')
+data = json.load(response)
+print data
+
+Parsing JSON Data:
+	Nếu như bạn đã có JSON data dưới dạng chuỗi, muốn
+	parsing chuỗi này thành Data thì sử dụng như cách dưới
+	đây:
+import json
+mystring = '{"a":1,"b":2,"c":3,"d":4,"e":5}'
+data = json.loads(mystring)
+print data
+(Hiển thị: {u'a': 1, u'c': 3, u'b': 2, u'e': 5, u'd': 4})
+
+Encoding JSON Data:
+
+import json
+mydata = {
+			'name': 'John',
+			'age': 10
+}
+jsonstring = json.dumps(mydata)
+print jsonstring
+(hiển thị: {"age": 10, "name": "John"})
+
+Chương 8. Xử lý file XML.
+Trong phần này, chúng ta sẽ parsing nội dung XML thành
+dữ liệu để xử lý. Để xử lý XML, ta sẽ sử dụng thư viện
+Beautifulsoup 4. Đây là một thư viện giúp việc triển khai
+việc parsing html, xml được nhanh chóng và tiện lợi.
+	Cài đặt Beautifulsoup:
+	Cài đặt lxml parser
+	Ví dụ về parsing XML
+	Parsing HTML
+Chương 9. Kết nối MySQL:
+MySQL là một hệ cơ sở dữ liệu quan hệ phổ biến nhất hiện
+nay. Rất nhiều ngôn ngữ có thể kết nối đến MySQL và
+Python cũng không ngoại lệ.
+Mặc định Python không có thư viện để kết nối đến MySQL
+server. Trong phần này, để kết nối đến MySQL Server từ
+Python, chúng ta sẽ sử dụng module MySQLdb
+	Cài đặt MySQLdb
+	Kết nối đến MySQL Server
+	Kết nối với charset utf8
+	Query dữ liệu
+	Fetch dữ liệu
+	Đóng kết nối
+	Prepared Statemen
+Chương 10. Kết nối Redis:
+Redis là một memory cache server hỗ trợ persistant data
+thông dụng nhất hiện nay. Nội dung chương này sẽ hướng
+dẫn bạn kết nối đến một Redis server (đã được cài đặt
+sẵn) thông qua thư viện redis-py
+	Cài đặt
+	Kết nối đến Redis
+	Thực hiện lệnh
+	Pipeline
+Chương 11. Kết nối Memcached:
+Memcached là một memory cache server thông dụng hiện
+nay. Nội dung chương này sẽ hướng dẫn bạn kết nối đến
+một Memcached server (đã được cài đặt sẵn) thông qua
+thư viện pylibmc .
+	Cài đặt
+	Kết nối đến Memcached Server
+	Thực hiện lệnh
+Chương 12. Kết nối RabbitMQ:
+RabbitMQ là một phần mềm cho phép xây dựng Message
+Queue theo protocol AMQP và khá thông dụng trên thế
+giới. Để kết nối đến RabbitMQ trên Python, ta sẽ sử dụng
+thư viện pika .
+	Cài đặt:
+	Gởi một message đến Server -Provider
+	Nhận message - Consumer
+	Tìm hiểu thêm về RabbitMQ và Pika
+Chương 13. Restful client:
+Ngày nay, với sự phong phú của các ứng dụng và nhu cầu
+kết nối ngày càng lớn thì Restful là một trong những mô
+hình web service được nhiều công ty sử dụng. Do đó, việc
+có thể kết nối đến các Restful web service là một kỹ năng
+cần thiết cho các lập trình viên.
+Chương này sẽ giới thiệu về một trong những thư viện nổi
+tiếng nhất trong Python để làm việc với các Restful web
+service, đó là requests .
+Website chính thức và các mô tả đầy đủ đều được đề cập
+	Cài đặt
+	Request
+	GET Query string
+	Request Body
+	Upload file
+	Response
+Chương 14. Gởi email với SMTP:
+SMTP là giao thức gởi mail thông dụng hiện nay. Python hỗ
+trợ mặc định thư viện smtplib dùng để kết nối đến một
+SMTP Server và gởi email. Tuy nhiên, việc sử dụng thư
+viện này sẽ gây khó khăn cho việc định dạng và sử dụng
+nên chúng ta sẽ sử dụng thư viện sender , là một thư viện
+giúp định dạng và gởi email đơn giản hơn.
+	Cài đặt sender
+	Gởi email đơn giản
+	Gởi email có đính kèm file
+	Tìm hiểu thêm
+Chương 15. Socket programming:
+Chương này sẽ ví dụ việc xây dựng một môi trường Client -
+Server sử dụng Socket. Server sẽ lắng nghe trên một port
+(12345) và khi client kết nối vào sẽ thông báo hiển thị
+thông tin của client (IP và Port) và gởi 1 message xuống
+cho client.
+	Server side
+	Client side
+  
+  
+  
+ http://bloghoctap.com/python/download-sach-python-rat-la-co-ban.html
