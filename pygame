@@ -1,2 +1,45 @@
 pip install pygame
+---
 
+import pygame #nhập vào thư viện pygame
+pygame.init() #sử dụng các thư viên của pygame (dòng này phải có :))
+
+win = pygame.display.set_mode((500, 500)) #tạo cửa sổ game. rộng 500, cao 500.
+
+pygame.display.set_caption("NEW GAME") #tạo cái tên cho cửa sổ game.
+
+x = 50 #tọa độ xuất hiện của vật, trục x
+y = 50 #...
+width = 40 #chiều rộng
+height = 60 #chiều cao
+vel = 5 #biến. khoản cách bước đi của vật 
+
+run = True #Như một cái công tắt để bật tắt game chẳng hạn :)
+while run: #bản chất của game là: vẽ - điều khiển - vòng lập mà :)!
+    pygame.time.delay(100) #độ trễ khung hình, chắc vậy!
+
+    for event in pygame.event.get(): #phần nhận lệnh đóng cửa sổ! Chắc vậy!
+        if event.type == pygame.QUIT:
+            run = False # Khi nhấn núc [x] thì run trả về FALSE để tắt vòng lập while chính.
+
+    keys = pygame.key.get_pressed()  #phần tạo các sự kiện cho phím bấm
+    if keys[pygame.K_LEFT]: #nếu nhấn phím mủi tên trái.
+        x -= vel #thì trục x của vật sẽ bằng x trừ cho vel(bước nhảy)
+    if keys[pygame.K_RIGHT]: #nếu nhấn phím mủi tên phải.
+        x += vel #...
+    if keys[pygame.K_UP]:
+        y -= vel
+    if keys[pygame.K_DOWN]:
+        y += vel
+    win.fill((0, 0, 0)) #làm tươi khung hình (trả một khung hình mới, hay làm màu phong nền)
+    pygame.draw.rect(win, (255, 0, 0), (x, y, width, height))
+    #pygame.draw.rect(surface, color, rect, width)
+
+    pygame.display.update() #dùng để cập nhật khung hình. Chắc vậy :)!
+
+    #Phương thức .blit dùng để vẽ 1 nền khác lên nền 1
+    
+pygame.quit() #sau khi while trả về FALSE thì sẽ thoát ra, thoát ra thì gặp dòng này sẽ đóng hoàn toàng game.
+
+
+---
